@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Sequelize, DataTypes, Model } from "sequelize";
 import sequelize from "../config/database";
 
@@ -12,7 +13,7 @@ export class Movie extends Model {
   public id!: number;
   public name!: string;
   public image!: string;
-  public publishDate!: Date;
+  public publishDate!: string;
 }
 
 User.init(

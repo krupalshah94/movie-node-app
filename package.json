@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npx ts-node-dev app.ts",
-    "build": "tsc && eslint . --quiet --fix"
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",

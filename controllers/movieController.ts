@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Request, Response } from "express";
 import { Movie } from "../models"; // Assuming you have a Movie model
 

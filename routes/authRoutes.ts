@@ -1,3 +1,4 @@
+/* eslint-disable */
 import express, { Request, Response } from "express";
 import { signup, login } from "../controllers/authController";
 

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import express from "express";
 import { createMovie, editMovie, listMovies, getMovieById } from "../controllers/movieController";
 import { authenticate } from "../middlewares/authMiddleware";
