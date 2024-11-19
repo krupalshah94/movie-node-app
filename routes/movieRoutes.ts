@@ -5,8 +5,6 @@ import { authenticate } from "../middlewares/authMiddleware";
 
 const router = express.Router();
 
-// Use the correct middleware and controller setup
-
 router.post("/create", authenticate, createMovie);
 router.put("/edit/:id", authenticate, editMovie);
 router.get("/list", authenticate, listMovies);

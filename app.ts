@@ -13,12 +13,12 @@ const app = express();
 
 const corsOptions = {
   origin: [
-    "http://localhost:3001", // Allow local frontend
-    "https://your-production-domain.com", // Allow production frontend
+    "http://localhost:3001", 
+    "https://movie-next-app-phi.vercel.app", 
   ],
-  methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
-  allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
-  credentials: true, // Allow credentials if needed (cookies, tokens, etc.)
+  methods: ["GET", "POST", "PUT", "DELETE"], 
+  allowedHeaders: ["Content-Type", "Authorization"], 
+  credentials: true,
 };
 app.use(cors(corsOptions));
 app.use(bodyParser.json());

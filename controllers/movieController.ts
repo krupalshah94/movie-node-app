@@ -2,7 +2,13 @@
 import { Request, Response } from "express";
 import { Movie } from "../models"; // Assuming you have a Movie model
 
-// Create a movie
+/**
+ * Creates a new movie and returns it in the response.
+ * @param {Request} req - Request object with the movie data in `req.body`.
+ * @param {Response} res - Response object.
+ * @returns {Promise<Response>} A promise resolving to a response object with a JSON payload containing the created movie.
+ * @throws {Error} If there is a database error or the request body is invalid.
+ */
 export const createMovie = async (req: Request, res: Response): Promise<void> => {
   try {
     const { name, image, publishDate } = req.body;
@@ -13,7 +19,13 @@ export const createMovie = async (req: Request, res: Response): Promise<void> =>
   }
 };
 
-// Edit a movie
+/**
+ * Updates a movie and returns the updated movie in the response.
+ * @param {Request} req - Request object with the movie data in `req.body` and the movie ID in `req.params`.
+ * @param {Response} res - Response object.
+ * @returns {Promise<Response>} A promise resolving to a response object with a JSON payload containing the updated movie.
+ * @throws {Error} If there is a database error or the request body is invalid.
+ */
 export const editMovie = async (req: Request, res: Response): Promise<void> => {
   try {
     const { id } = req.params;
@@ -30,7 +42,13 @@ export const editMovie = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-// List movies with pagination
+/**
+ * Retrieves a paginated list of movies and returns them in the response.
+ * @param {Request} req - Request object, with pagination parameters `page` and `limit` in `req.query`.
+ * @param {Response} res - Response object.
+ * @returns {Promise<void>} A promise resolving to a response object with a JSON payload containing the list of movies, total count, current page, and total pages.
+ * @throws {Error} If there is a database error or the request query is invalid.
+ */
 export const listMovies = async (req: Request, res: Response): Promise<void> => {
   try {
     const { page = 1, limit = 8 } = req.query;
@@ -51,6 +69,13 @@ export const listMovies = async (req: Request, res: Response): Promise<void> => 
   }
 };
 
+/**
+ * Retrieves a single movie by its ID and returns it in the response.
+ * @param {Request} req - Request object with the ID of the movie to retrieve in `req.params`.
+ * @param {Response} res - Response object.
+ * @returns {Promise<void>} A promise resolving to a response object with a JSON payload containing the movie.
+ * @throws {Error} If there is a database error or the movie is not found.
+ */
 export const getMovieById = async (req: Request, res: Response): Promise<void> => {
   try {
     const { id } = req.params;

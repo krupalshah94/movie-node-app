@@ -4,7 +4,13 @@ import { User } from "../models";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-// Define the correct return type as Promise<Response>
+  /**
+   * Sign up a new user.
+   * @param {Request} req - Request object with the user's data in `req.body`.
+   * @param {Response} res - Response object.
+   * @returns {Promise<Response>} A promise resolving to a response object.
+   * @throws {Error} If there is a database error or the user already exists.
+   */
 export const signup = async (req: Request, res: Response): Promise<Response> => {
   try {
     const { username, email, password } = req.body;
@@ -16,6 +22,13 @@ export const signup = async (req: Request, res: Response): Promise<Response> => 
   }
 };
 
+  /**
+   * Login an existing user.
+   * @param {Request} req - Request object with the user's credentials in `req.body`.
+   * @param {Response} res - Response object.
+   * @returns {Promise<Response>} A promise resolving to a response object with a JSON Web Token.
+   * @throws {Error} If the user is not found, the credentials are invalid, or there is a database error.
+   */
 export const login = async (req: Request, res: Response): Promise<Response> => {
   try {
     const { email, password } = req.body;
@@ -26,7 +39,7 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
     if (!isMatch) return res.status(401).json({ error: "Invalid credentials" });
 
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET as string, {
-      expiresIn: "1h",
+      expiresIn: "24h",
     });
     return res.json({ token });
   } catch (error) {

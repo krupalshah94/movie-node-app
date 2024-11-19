@@ -31,12 +31,10 @@ const upload = multer({
         cb(null, `uploads/${Date.now()}_${file.originalname}`);
       },
       contentType: (req, file, cb) => {
-        // Set the correct content type based on the file's MIME type
         cb(null, file.mimetype);
       },
     }),
     fileFilter: (req, file, cb) => {
-      // Allow only image files
       if (!file.mimetype.startsWith("image/")) {
         return cb(new Error("Only image files are allowed!") as unknown as null, false);
       }
@@ -45,17 +43,16 @@ const upload = multer({
   });
   
 
-// API endpoint to upload an image
 router.post("/", upload.single("image"), (req: Request, res: Response): void => {
     if (!req.file) {
       res.status(400).json({ message: "No file uploaded!" });
-      return; // Ensure the function exits here
+      return;
     }
   
     const file = req.file as Express.MulterS3.File;
     res.status(200).json({
       message: "File uploaded successfully!",
-      fileUrl: file.location, // The URL of the uploaded file
+      fileUrl: file.location,
     });
   });
 

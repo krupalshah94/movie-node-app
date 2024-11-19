@@ -4,7 +4,6 @@ import { signup, login } from "../controllers/authController";
 
 const router = express.Router();
 
-// Wrap the route handlers properly
 router.post("/signup", async (req: Request, res: Response) => {
   console.log(req.body);
   
